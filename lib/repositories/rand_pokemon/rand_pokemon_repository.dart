@@ -1,16 +1,17 @@
 import 'dart:convert';
 import 'dart:math';
 import 'package:http/http.dart' as http;
-import 'package:pokemon_tcg/constants/api_key.dart';
+import 'package:pokemon_tcg/constants/api.dart';
 
 class RandomPokemonRepository {
   static final instance = RandomPokemonRepository._singleton();
-  final String _url =
-      'https://api.pokemontcg.io/v2/cards?q=nationalPokedexNumbers';
+  final String _url = '$apiURL?q=nationalPokedexNumbers';
 
   RandomPokemonRepository._singleton();
 
   String? _name;
+
+  String? get name => _name;
 
   getRandomPokemon() async {
     var rng = new Random();

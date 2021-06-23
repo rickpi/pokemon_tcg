@@ -1,6 +1,6 @@
 abstract class RandomPokemonState {}
 
-class RandomPokemonStateUnitialized extends RandomPokemonState {}
+class RandomPokemonStateUninitialized extends RandomPokemonState {}
 
 class RandomPokemonStateInitialized extends RandomPokemonState {
   final String name;
