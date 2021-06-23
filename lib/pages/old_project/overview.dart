@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pokemon_tcg/models/pokemon.dart';
-import 'package:pokemon_tcg/pages/pokemon_card.dart';
+import 'package:pokemon_tcg/pages/old_project/pokemon_card.dart';
 
 class Overview extends StatefulWidget {
   final String url = 'https://api.pokemontcg.io/v2/cards';

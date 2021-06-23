@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:pokemon_tcg/models/pokemon.dart';
-import 'package:pokemon_tcg/pages/pokemon_datails.dart';
+import 'package:pokemon_tcg/pages/old_project/pokemon_datails.dart';
 
 class PokemonCard extends StatefulWidget {
   final Pokemon pokemon;

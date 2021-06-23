@@ -1,5 +1,5 @@
-import 'package:pokemon_tcg/pages/pokemon_tcg.dart';
+import 'package:pokemon_tcg/pages/homepage/homepage.dart';
 
 var appRoutes = {
-  '/': (_) => PokemonTCG(),
+  '/': (_) => HomePage(),
 };
