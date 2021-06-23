@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:pokemon_tcg/constants/api.dart';
 import 'package:pokemon_tcg/models/pokemon.dart';
@@ -25,5 +26,6 @@ class RandomPokemonRepository {
     var index = rng.nextInt(totalCount);
     var data = body['data'];
     _pokemon = Pokemon.fromJson(data[index]);
+    await DefaultCacheManager().downloadFile(_pokemon!.smallImage!);
   }
 }
