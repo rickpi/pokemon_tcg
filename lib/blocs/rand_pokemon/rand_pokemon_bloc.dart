@@ -11,8 +11,10 @@ class RandomPokemonBloc extends Bloc<RandomPokemonEvent, RandomPokemonState> {
 
     if (event is RandomPokemonEventGetOne) {
       await randPokeRepo.getRandomPokemon();
+      yield RandomPokemonStateInitialized(randPokeRepo.name!);
     }
-
-    yield RandomPokemonStateInitialized(randPokeRepo.name!);
+    if (event is RandomPokemonEventLoading) {
+      yield RandomPokemonStateIsLoading();
+    }
   }
 }

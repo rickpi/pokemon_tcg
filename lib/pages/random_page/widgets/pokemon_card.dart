@@ -10,7 +10,8 @@ class PokemonCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<RandomPokemonBloc, RandomPokemonState>(
       builder: (context, state) {
-        if (state is RandomPokemonStateUninitialized) {
+        if (state is RandomPokemonStateUninitialized ||
+            state is RandomPokemonStateIsLoading) {
           return CircularProgressIndicator();
         } else if (state is RandomPokemonStateInitialized) {
           return Text(state.name);

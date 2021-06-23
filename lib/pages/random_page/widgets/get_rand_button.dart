@@ -12,6 +12,8 @@ class RandomButton extends StatelessWidget {
     return PurpleButton(
         onPressed: () {
           BlocProvider.of<RandomPokemonBloc>(context)
+              .add(RandomPokemonEventLoading());
+          BlocProvider.of<RandomPokemonBloc>(context)
               .add(RandomPokemonEventGetOne());
         },
         child: Text('Get a pokémon'));
