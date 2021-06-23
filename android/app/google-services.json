@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "381856077899",
+    "project_id": "pokemon-tcg-3ecd2",
+    "storage_bucket": "pokemon-tcg-3ecd2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381856077899:android:4edf7d8f660ac9f9e095ce",
+        "android_client_info": {
+          "package_name": "com.example.pokemon_tcg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381856077899-6j78j75spmc0vojfi3png507m8fpd5tj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQLYSzPzwiLCbpTVrgLjev1OE-iCmiSZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381856077899-6j78j75spmc0vojfi3png507m8fpd5tj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
