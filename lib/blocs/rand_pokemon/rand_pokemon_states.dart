@@ -1,3 +1,5 @@
+import 'package:pokemon_tcg/models/pokemon.dart';
+
 abstract class RandomPokemonState {}
 
 class RandomPokemonStateUninitialized extends RandomPokemonState {}
@@ -5,6 +7,6 @@ class RandomPokemonStateUninitialized extends RandomPokemonState {}
 class RandomPokemonStateIsLoading extends RandomPokemonState {}
 
 class RandomPokemonStateInitialized extends RandomPokemonState {
-  final String name;
-  RandomPokemonStateInitialized(this.name);
+  final Pokemon pokemon;
+  RandomPokemonStateInitialized(this.pokemon);
 }

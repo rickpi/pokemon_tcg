@@ -14,7 +14,7 @@ class PokemonCard extends StatelessWidget {
             state is RandomPokemonStateIsLoading) {
           return CircularProgressIndicator();
         } else if (state is RandomPokemonStateInitialized) {
-          return Text(state.name);
+          return Text(state.pokemon.name!);
         } else {
           return Text('State unknown');
         }
