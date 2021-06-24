@@ -38,6 +38,8 @@ class _PokemonCardState extends State<PokemonCard>
 
   @override
   void afterFirstLayout(BuildContext context) {
+    BlocProvider.of<RandomPokemonBloc>(context)
+        .add(RandomPokemonEventLoading());
     BlocProvider.of<RandomPokemonBloc>(context).add(RandomPokemonEventGetOne());
   }
 
