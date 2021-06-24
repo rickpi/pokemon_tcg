@@ -4,6 +4,8 @@ import 'package:pokemon_tcg/blocs/rand_pokemon/rand_pokemon_bloc.dart';
 import 'package:pokemon_tcg/routes/routes.dart';
 import 'package:pokemon_tcg/style/themes.dart';
 
+import 'blocs/favorites/favorites_bloc.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -11,8 +13,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => RandomPokemonBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<RandomPokemonBloc>(
+          create: (_) => RandomPokemonBloc(),
+        ),
+        BlocProvider<FavoritesBloc>(
+          create: (_) => FavoritesBloc(),
+        ),
+      ],
       child: MaterialApp(
         theme: appTheme,
         initialRoute: '/',
