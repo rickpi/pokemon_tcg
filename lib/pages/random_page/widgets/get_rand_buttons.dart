@@ -49,7 +49,8 @@ class RandomButton extends StatelessWidget {
       builder: (context, state) {
         if (state is FavoritesStateUninitialized) {
           return _addButton(context, pokemon);
-        } else if (state is FavoritesStateInitialized) {
+        } else if (state is FavoritesStateInitialized ||
+            state is FavoritesStateEmpty) {
           return FavoritesRepository.instance.isPokemonInList(pokemon)
               ? _removeButton(context, pokemon)
               : _addButton(context, pokemon);

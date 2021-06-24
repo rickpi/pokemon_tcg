@@ -12,7 +12,7 @@ class FavoritesRepository {
 
   addFav(Pokemon pokemon) {
     if (_favorites == null) {
-      _loadPokemonsFromSharedPreferences();
+      loadPokemonsFromSharedPreferences();
     }
     if (!this.isPokemonInList(pokemon)) {
       _favorites!.add(pokemon);
@@ -21,12 +21,12 @@ class FavoritesRepository {
 
   removeFav(String id) {
     if (_favorites == null) {
-      _loadPokemonsFromSharedPreferences();
+      loadPokemonsFromSharedPreferences();
     }
     _favorites!.removeWhere((favorite) => favorite.id == id);
   }
 
-  _loadPokemonsFromSharedPreferences() {
+  loadPokemonsFromSharedPreferences() {
     _favorites = [];
   }
 
