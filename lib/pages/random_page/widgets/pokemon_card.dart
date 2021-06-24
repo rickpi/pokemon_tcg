@@ -21,7 +21,9 @@ class _PokemonCardState extends State<PokemonCard>
       builder: (context, state) {
         if (state is RandomPokemonStateUninitialized ||
             state is RandomPokemonStateIsLoading) {
-          return Center(child: CircularProgressIndicator());
+          return Center(
+              child: CircularProgressIndicator(
+                  color: Theme.of(context).primaryColor));
         } else if (state is RandomPokemonStateInitialized) {
           return _card(state);
         } else {
@@ -37,10 +39,13 @@ class _PokemonCardState extends State<PokemonCard>
   }
 
   Widget _card(RandomPokemonStateInitialized state) {
-    return CachedNetworkImage(
-      fit: BoxFit.cover,
-      alignment: Alignment.topCenter,
-      imageUrl: state.pokemon.smallImage!,
+    return InkWell(
+      onDoubleTap: () => {},
+      child: CachedNetworkImage(
+        fit: BoxFit.cover,
+        alignment: Alignment.topCenter,
+        imageUrl: state.pokemon.smallImage!,
+      ),
     );
   }
 }

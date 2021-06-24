@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 var appTheme = ThemeData(
   primaryColor: Colors.deepPurple,
   accentColor: Colors.yellow,
+  backgroundColor: Colors.black87,
   textTheme: textTheme,
 );
 
