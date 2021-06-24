@@ -77,6 +77,15 @@ class Pokemon {
               ]
             : [];
 
+  static bool isPokemonInList(List<Pokemon> list, Pokemon pokemon) {
+    try {
+      list.firstWhere((item) => item.id == pokemon.id);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   @override
   String toString() =>
       'id: $id\n' +
