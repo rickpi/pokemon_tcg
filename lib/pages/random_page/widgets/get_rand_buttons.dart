@@ -6,6 +6,8 @@ import 'package:pokemon_tcg/blocs/favorites/favorites_states.dart';
 import 'package:pokemon_tcg/blocs/rand_pokemon/rand_pokemon_bloc.dart';
 import 'package:pokemon_tcg/blocs/rand_pokemon/rand_pokemon_events.dart';
 import 'package:pokemon_tcg/blocs/rand_pokemon/rand_pokemon_states.dart';
+import 'package:pokemon_tcg/blocs/shared_preferences/shared_preferences_bloc.dart';
+import 'package:pokemon_tcg/blocs/shared_preferences/shared_preferences_events.dart';
 import 'package:pokemon_tcg/models/pokemon.dart';
 import 'package:pokemon_tcg/repositories/favorites/favorites_repository.dart';
 import 'package:pokemon_tcg/style/purple_button.dart';
@@ -51,6 +53,9 @@ class RandomButton extends StatelessWidget {
           return _addButton(context, pokemon);
         } else if (state is FavoritesStateInitialized ||
             state is FavoritesStateEmpty) {
+          BlocProvider.of<SharedPreferencesBloc>(context).add(
+              SharedPreferencesEventStore(
+                  FavoritesRepository.instance.favorites!));
           return FavoritesRepository.instance.isPokemonInList(pokemon)
               ? _removeButton(context, pokemon)
               : _addButton(context, pokemon);

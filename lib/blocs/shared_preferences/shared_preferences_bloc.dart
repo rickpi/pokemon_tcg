@@ -5,19 +5,19 @@ import 'package:pokemon_tcg/repositories/shared_preferences/shared_preferences_r
 
 class SharedPreferencesBloc
     extends Bloc<SharedPreferencesEvent, SharedPreferencesState> {
-  SharedPreferencesBloc() : super(SharedPreferencesStateUninitialized());
+  SharedPreferencesBloc() : super(SharedPreferencesStateInitialized());
 
   Stream<SharedPreferencesState> mapEventToState(
       SharedPreferencesEvent event) async* {
     final sfRepo = SharedPreferencesRepository.instance;
 
     if (event is SharedPreferencesEventStore) {
-      sfRepo.storeInSF(event.pokemons);
+      await sfRepo.storeInSF(event.pokemons);
       yield SharedPreferencesStateInitialized();
     }
 
     if (event is SharedPreferencesEventGet) {
-      sfRepo.getFromSF();
+      await sfRepo.getFromSF();
       yield SharedPreferencesStateInitialized();
     }
   }

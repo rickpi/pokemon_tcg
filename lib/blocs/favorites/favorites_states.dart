@@ -9,4 +9,7 @@ class FavoritesStateInitialized extends FavoritesState {
   FavoritesStateInitialized(this.favorites);
 }
 
-class FavoritesStateEmpty extends FavoritesState {}
+class FavoritesStateEmpty extends FavoritesState {
+  final List<Pokemon> favorites = [];
+  FavoritesStateEmpty();
+}

@@ -1,14 +1,21 @@
+import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_tcg/blocs/navigation/navigation_bloc.dart';
 import 'package:pokemon_tcg/blocs/navigation/navigation_events.dart';
 import 'package:pokemon_tcg/blocs/navigation/navigation_states.dart';
-import 'package:pokemon_tcg/pages/random_page/random_page.dart';
+import 'package:pokemon_tcg/blocs/shared_preferences/shared_preferences_bloc.dart';
+import 'package:pokemon_tcg/blocs/shared_preferences/shared_preferences_events.dart';
 import 'package:pokemon_tcg/repositories/navigation/navigation_repository.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NavigationBloc, NavigationState>(
@@ -39,5 +46,11 @@ class HomePage extends StatelessWidget {
         }
       },
     );
+  }
+
+  @override
+  void afterFirstLayout(BuildContext context) {
+    BlocProvider.of<SharedPreferencesBloc>(context)
+        .add(SharedPreferencesEventGet());
   }
 }
