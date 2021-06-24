@@ -11,7 +11,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
 
     if (event is FavoritesEventInit) {
       favoritesRepo.loadPokemonsFromSharedPreferences();
-      yield FavoritesStateInitialized(favoritesRepo.favorites!);
+      yield FavoritesStateEmpty();
     }
     if (event is FavoritesEventAdd) {
       favoritesRepo.addFav(event.pokemon);
