@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_tcg/pages/random_page/widgets/get_rand_buttons.dart';
-import 'package:pokemon_tcg/pages/random_page/widgets/pokemon_card.dart';
 
-class RandomPage extends StatelessWidget {
+class FavoritesPage extends StatelessWidget {
+  const FavoritesPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,19 +11,16 @@ class RandomPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Get a random Pokémon',
+            'Your favorites',
             style: TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.w500,
                 color: Colors.white),
             textAlign: TextAlign.left,
           ),
-          Container(height: 30.0),
-          Expanded(flex: 3, child: PokemonCard()),
-          Container(height: 20.0),
-          RandomButton()
         ],
       ),
     );
+    ;
   }
 }
