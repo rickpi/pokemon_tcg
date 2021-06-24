@@ -3,7 +3,6 @@ import 'package:pokemon_tcg/models/pokemon.dart';
 
 class FavoritesRepository {
   static final instance = FavoritesRepository._singleton();
-
   FavoritesRepository._singleton();
 
   List<Pokemon>? _favorites;
