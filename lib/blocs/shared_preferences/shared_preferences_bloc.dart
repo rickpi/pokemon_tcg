@@ -5,7 +5,7 @@ import 'package:pokemon_tcg/repositories/shared_preferences/shared_preferences_r
 
 class SharedPreferencesBloc
     extends Bloc<SharedPreferencesEvent, SharedPreferencesState> {
-  SharedPreferencesBloc() : super(SharedPreferencesStateInitialized());
+  SharedPreferencesBloc() : super(SharedPreferencesStateUninitialized());
 
   Stream<SharedPreferencesState> mapEventToState(
       SharedPreferencesEvent event) async* {
