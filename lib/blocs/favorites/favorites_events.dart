@@ -14,4 +14,8 @@ class FavoritesEventRemove extends FavoritesEvent {
   FavoritesEventRemove(this.id);
 }
 
-class FavoritesEventInit extends FavoritesEvent {}
+class FavoritesEventInit extends FavoritesEvent {
+  final List<String>? listId;
+
+  FavoritesEventInit(this.listId);
+}

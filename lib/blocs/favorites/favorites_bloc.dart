@@ -10,20 +10,18 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     final favoritesRepo = FavoritesRepository.instance;
 
     if (event is FavoritesEventInit) {
-      favoritesRepo.loadPokemonsFromSharedPreferences();
-      yield FavoritesStateEmpty();
+      await favoritesRepo.loadPokemonsFromSharedPreferences(event.listId);
     }
     if (event is FavoritesEventAdd) {
       favoritesRepo.addFav(event.pokemon);
-      yield FavoritesStateInitialized(favoritesRepo.favorites!);
     }
     if (event is FavoritesEventRemove) {
       favoritesRepo.removeFav(event.id);
-      if (favoritesRepo.favorites!.length == 0) {
-        yield FavoritesStateEmpty();
-      } else {
-        yield FavoritesStateInitialized(favoritesRepo.favorites!);
-      }
+    }
+    if (favoritesRepo.favorites!.length == 0) {
+      yield FavoritesStateEmpty();
+    } else {
+      yield FavoritesStateInitialized(favoritesRepo.favorites!);
     }
   }
 }

@@ -25,8 +25,7 @@ class SharedPreferencesRepository {
     } else {
       String? encoded = prefs.getString('favorites');
       var decoded = jsonDecode(encoded!);
-
-      print(decoded);
+      _stored = [for (var id in decoded) id];
     }
   }
 }

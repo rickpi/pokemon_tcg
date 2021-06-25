@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_tcg/blocs/favorites/favorites_bloc.dart';
 import 'package:pokemon_tcg/blocs/favorites/favorites_events.dart';
 import 'package:pokemon_tcg/blocs/favorites/favorites_states.dart';
+import 'package:pokemon_tcg/repositories/shared_preferences/shared_preferences_repository.dart';
 import 'package:pokemon_tcg/style/scrollable_column.dart';
 
 class FavoritesPage extends StatelessWidget {
@@ -28,8 +29,9 @@ class FavoritesPage extends StatelessWidget {
             child: BlocBuilder<FavoritesBloc, FavoritesState>(
               builder: (context, state) {
                 if (state is FavoritesStateUninitialized) {
-                  BlocProvider.of<FavoritesBloc>(context)
-                      .add(FavoritesEventInit());
+                  BlocProvider.of<FavoritesBloc>(context).add(
+                      FavoritesEventInit(
+                          SharedPreferencesRepository.instance.stored));
                   return Text(
                     'You don\'t have favorite',
                     style: TextStyle(
