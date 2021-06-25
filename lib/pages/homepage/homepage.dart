@@ -22,8 +22,10 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
     return BlocBuilder<SharedPreferencesBloc, SharedPreferencesState>(
         builder: (context, state) {
       if (state is SharedPreferencesStateUninitialized) {
-        return CircularProgressIndicator(
-          color: Theme.of(context).primaryColor,
+        return Center(
+          child: CircularProgressIndicator(
+            color: Theme.of(context).primaryColor,
+          ),
         );
       } else if (state is SharedPreferencesStateInitialized) {
         return BlocBuilder<NavigationBloc, NavigationState>(
@@ -31,23 +33,25 @@ class _HomePageState extends State<HomePage> with AfterLayoutMixin<HomePage> {
             if (state is NavigationStateInitialized) {
               var navItems = NavigationRepository.instance.navItems;
 
-              return Scaffold(
-                backgroundColor: Theme.of(context).backgroundColor,
-                body: navItems[state.index]['widget'],
-                bottomNavigationBar: BottomNavigationBar(
-                    backgroundColor: Theme.of(context).primaryColor,
-                    items: [
-                      for (var item in navItems)
-                        BottomNavigationBarItem(
-                            icon: Icon(item['icon']), label: item['label'])
-                    ],
-                    currentIndex: state.index,
-                    selectedItemColor: Colors.white,
-                    showUnselectedLabels: false,
-                    onTap: (int index) {
-                      BlocProvider.of<NavigationBloc>(context)
-                          .add(NavigationEventNavigate(index));
-                    }),
+              return SafeArea(
+                child: Scaffold(
+                  backgroundColor: Theme.of(context).backgroundColor,
+                  body: navItems[state.index]['widget'],
+                  bottomNavigationBar: BottomNavigationBar(
+                      backgroundColor: Theme.of(context).primaryColor,
+                      items: [
+                        for (var item in navItems)
+                          BottomNavigationBarItem(
+                              icon: Icon(item['icon']), label: item['label'])
+                      ],
+                      currentIndex: state.index,
+                      selectedItemColor: Colors.white,
+                      showUnselectedLabels: false,
+                      onTap: (int index) {
+                        BlocProvider.of<NavigationBloc>(context)
+                            .add(NavigationEventNavigate(index));
+                      }),
+                ),
               );
             } else {
               return Text('Unknown state');

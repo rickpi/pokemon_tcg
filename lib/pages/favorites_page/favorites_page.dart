@@ -4,6 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemon_tcg/blocs/favorites/favorites_bloc.dart';
 import 'package:pokemon_tcg/blocs/favorites/favorites_events.dart';
 import 'package:pokemon_tcg/blocs/favorites/favorites_states.dart';
+import 'package:pokemon_tcg/blocs/shared_preferences/shared_preferences_bloc.dart';
+import 'package:pokemon_tcg/blocs/shared_preferences/shared_preferences_events.dart';
+import 'package:pokemon_tcg/repositories/favorites/favorites_repository.dart';
 import 'package:pokemon_tcg/repositories/shared_preferences/shared_preferences_repository.dart';
 import 'package:pokemon_tcg/style/scrollable_column.dart';
 
@@ -32,14 +35,14 @@ class FavoritesPage extends StatelessWidget {
                   BlocProvider.of<FavoritesBloc>(context).add(
                       FavoritesEventInit(
                           SharedPreferencesRepository.instance.stored));
-                  return Text(
-                    'You don\'t have favorite',
-                    style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
+                  return Center(
+                    child: CircularProgressIndicator(
+                        color: Theme.of(context).primaryColor),
                   );
                 } else if (state is FavoritesStateEmpty) {
+                  BlocProvider.of<SharedPreferencesBloc>(context).add(
+                      SharedPreferencesEventStore(
+                          FavoritesRepository.instance.favorites!));
                   return Text(
                     'You don\'t have favorite',
                     style: TextStyle(
@@ -48,6 +51,9 @@ class FavoritesPage extends StatelessWidget {
                         color: Colors.white),
                   );
                 } else if (state is FavoritesStateInitialized) {
+                  BlocProvider.of<SharedPreferencesBloc>(context).add(
+                      SharedPreferencesEventStore(
+                          FavoritesRepository.instance.favorites!));
                   return _listFavorites(context, state);
                 } else {
                   return Text('Unknown state');
